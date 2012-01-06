@@ -56,6 +56,22 @@ MEDIA_URL = '/media/'
 
 STATIC_URL = '/static/'
 
+# Cachery
+CACHES = {
+    'default': {
+        'BACKEND': 'django_pylibmc.memcached.PyLibMCCache'
+    }
+}
+
+# RS Cloud files bizzo
+CUMULUS_USERNAME = 'USERNAME'
+CUMULUS_API_KEY = 'APIKEYKEYKEY'
+CUMULUS_CONTAINER = 'NPDjangoStorage'
+DEFAULT_FILE_STORAGE = 'cumulus.storage.CloudFilesStorage'
+CUMULUS_STATIC_CONTAINER = 'NPDjangoStorage'
+CUMULUS_USE_SERVICENET = False
+CUMULUS_FILTER_LIST = []
+
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
 # trailing slash.
 # Examples: "http://foo.com/media/", "/media/".
@@ -121,4 +137,5 @@ INSTALLED_APPS = (
     'cms.plugins.googlemap',
     'sekizai',
     'gunicorn',
+	'cumulus',
 )
